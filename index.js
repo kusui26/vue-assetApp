@@ -5,7 +5,6 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 // const yahooFinance = require("yahoo-finance");
 const yahooFinance = require('yahoo-finance2').default;
-const port = 3000
 
 app.use('/', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -91,4 +90,5 @@ app.post('/exchange/', (req, res) => {
     // )
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Example app listening on port ${port}!`))

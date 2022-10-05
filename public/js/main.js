@@ -70,15 +70,15 @@ const apple = Vue.createApp({
         // },
         assetUpdate: function () {
 
-            totalCryptAsset = 0
-            totalInvestTrustAsset = 0
-            totalStockAsset = 0
-            totalDepositAsset = 0
-            totalCryptGet = 0
-            totalInvestTrustGet = 0
-            totalStockGet = 0
-            graphValueList = []
-            graphNameLists = []
+            this.totalCryptAsset = 0
+            this.totalInvestTrustAsset = 0
+            this.totalStockAsset = 0
+            this.totalDepositAsset = 0
+            this.totalCryptGet = 0
+            this.totalInvestTrustGet = 0
+            this.totalStockGet = 0
+            this.graphValueList = []
+            this.graphNameLists = []
 
             this.cryptUpdate();
             this.investTrustUpdate();
