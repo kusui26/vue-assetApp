@@ -30,8 +30,8 @@
             <button v-on:click="cryptAddList" type="button" class="button margin">仮想通貨追加</button>
         </div>
 
-        <div class="row table1">
-            <table class="col-md-6">
+        <!-- <div class="row table1">
+            <table class="col-6">
                 <thead>
                     <tr>
                         <th>資産総計</th>
@@ -47,10 +47,10 @@
                     <td>{{ totalProfitCalculate() }}</td>
                 </tr>
             </table>
-        </div>
+        </div> -->
 
-        <div class="row table1">
-            <table class="col-md-1">
+        <!-- <div class="row table1">
+            <table class="col-1">
                 <thead>
                     <tr>
                         <th>####</th>
@@ -61,13 +61,13 @@
                 </tr>
             </table>
 
-            <table class="col-md-4">
+            <table class="col-4">
                 <thead>
                     <tr>
-                        <th class="col-md-1">銀行名</th>
-                        <th class="col-md-1">支店名</th>
-                        <th class="col-md-1">預金額</th>
-                        <th class="col-md-1">削除</th>
+                        <th>銀行名</th>
+                        <th>支店名</th>
+                        <th>預金額</th>
+                        <th>削除</th>
                     </tr>
                 </thead>
                 <tr v-for="(depositList, index) in depositLists">
@@ -78,10 +78,10 @@
 
                 </tr>
             </table>
-        </div>
+        </div> -->
 
-        <div class="row">
-            <table class="col-md-1">
+        <!-- <div class="row">
+            <table class="col-1">
                 <thead>
                     <tr>
                         <th>####</th>
@@ -92,17 +92,17 @@
                 </tr>
             </table>
 
-            <table class="col-md-11">
-                <thead>
+            <table class="col-11">
+                <thead class="row">
                     <tr>
-                        <th class="col-md-1">コード</th>
-                        <th class="col-md-1">名称</th>
-                        <th class="col-md-1">取得価格</th>
-                        <th class="col-md-1">保有数量</th>
-                        <th class="col-md-2">現在単価</th>
-                        <th class="col-md-2">現在価格</th>
-                        <th class="col-md-2">損益</th>
-                        <th class="col-md-1">削除</th>
+                        <th class="md-1">コード</th>
+                        <th>名称</th>
+                        <th>取得価格</th>
+                        <th>保有数量</th>
+                        <th>現在単価</th>
+                        <th>現在価格</th>
+                        <th>損益</th>
+                        <th>削除</th>
                     </tr>
                 </thead>
                 <tr v-for="(investTrustList, index) in investTrustLists">
@@ -120,36 +120,36 @@
         </div>
 
         <div class="row">
-            <table class="col-md-1">
+            <table class="col-1">
                 <tr>
                     <td>株式</td>
                 </tr>
             </table>
 
-            <table class="col-md-11">
+            <table class="col-11">
                 <tr v-for="(stockList, index) in stockLists">
-                    <td class="col-md-1"><input type="text" v-model="stockList.stockCode" placeholder="コード"></td>
-                    <td class="col-md-1"><input type="text" v-model="stockList.stockName" placeholder="名称"></td>
-                    <td class="col-md-1"><input type="text" v-model="stockList.stockGetValue" placeholder="取得価格"></td>
-                    <td class="col-md-1"><input type="text" v-model="stockList.stockStock" placeholder="保有数量"></td>
-                    <td class="col-md-2">{{ stockList.stockValue }}</td>
-                    <td class="col-md-2">{{ stockList.stockTotalValue }}</td>
-                    <td class="col-md-2">{{ stockList.stockProfit }}</td>
-                    <td class="col-md-1"><button v-on:click="stockDeleteList(index)">Delete</button></td>
+                    <td><input type="text" v-model="stockList.stockCode" placeholder="コード"></td>
+                    <td><input type="text" v-model="stockList.stockName" placeholder="名称"></td>
+                    <td><input type="text" v-model="stockList.stockGetValue" placeholder="取得価格"></td>
+                    <td><input type="text" v-model="stockList.stockStock" placeholder="保有数量"></td>
+                    <td>{{ stockList.stockValue }}</td>
+                    <td>{{ stockList.stockTotalValue }}</td>
+                    <td>{{ stockList.stockProfit }}</td>
+                    <td><button v-on:click="stockDeleteList(index)">Delete</button></td>
                 </tr>
             </table>
         </div>
 
         <div class="row table1">
-            <table class="col-md-1">
+            <table class="col-1">
                 <tr>
                     <td>仮想通貨</td>
                 </tr>
             </table>
 
-            <table class="col-md-11">
+            <table class="col-11">
                 <tr v-for="(cryptList, index) in cryptLists">
-                    <td class="col-md-2 crypt">
+                    <td class="crypt">
                         <select v-model="cryptList.cryptCode" placeholder="コード">
                             <option>btc_jpy</option>
                             <option>eth_jpy</option>
@@ -158,20 +158,39 @@
                             <option>mona_jpy</option>
                         </select>
                     </td>
-                    <td class="col-md-1"><input type="text" v-model="cryptList.cryptName" placeholder="名称"></td>
-                    <td class="col-md-1"><input type="text" v-model="cryptList.cryptGetValue" placeholder="取得価格"></td>
-                    <td class="col-md-1"><input type="text" v-model="cryptList.cryptStock" placeholder="保有数量"></td>
-                    <td class="col-md-2">{{ cryptList.cryptValue }}</td>
-                    <td class="col-md-2">{{ cryptList.cryptTotalValue }}</td>
-                    <td class="col-md-2">{{ cryptList.cryptProfit }}</td>
-                    <td class="col-md-1"><button v-on:click="cryptDeleteList(index)">Delete</button></td>
+                    <td><input type="text" v-model="cryptList.cryptName" placeholder="名称"></td>
+                    <td><input type="text" v-model="cryptList.cryptGetValue" placeholder="取得価格"></td>
+                    <td><input type="text" v-model="cryptList.cryptStock" placeholder="保有数量"></td>
+                    <td>{{ cryptList.cryptValue }}</td>
+                    <td>{{ cryptList.cryptTotalValue }}</td>
+                    <td>{{ cryptList.cryptProfit }}</td>
+                    <td><button v-on:click="cryptDeleteList(index)">Delete</button></td>
+                </tr>
+            </table>
+        </div> -->
+
+        <div class="assetTable total">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="inputSize">資産総計</th>
+                        <th class="inputSize">現在価格</th>
+                        <th class="inputSize">取得価格</th>
+                        <th class="inputSize">損益</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>{{ totalAssetCalculate() }}</td>
+                    <td>{{ totalValueCalculate() }}</td>
+                    <td>{{ totalGetCalculate() }}</td>
+                    <td>{{ totalProfitCalculate() }}</td>
                 </tr>
             </table>
         </div>
 
 
 
-        <!-- <div class="assetTable">
+        <div class="assetTable bank">
             <table class="table title">
                 <thead>
                     <tr class="table-primary">
@@ -179,35 +198,125 @@
                     </tr>
                 </thead>
                 <tr>
-                    <td>投資信託</td>
+                    <td class="index">預金</td>
                 </tr>
             </table>
 
             <table class="table">
                 <thead>
                     <tr class="table-primary">
-                        <th class="inputSize">コード</th>
-                        <th class="inputSize">名称</th>
-                        <th class="inputSize">取得価格</th>
-                        <th class="inputSize">保有数量</th>
-                        <th class="resultSize">現在単価</th>
-                        <th class="resultSize2">現在価格</th>
-                        <th class="resultSize2">損益</th>
+                        <th class="inputSize">銀行名</th>
+                        <th class="inputSize">支店名</th>
+                        <th class="inputSize">預金額</th>
+                        <th class="deleteSize">削除</th>
                     </tr>
                 </thead>
-                <tr v-for="(investTrustList, index) in investTrustLists">
-                    <td><input type="text" v-model="investTrustList.investTrustCode" placeholder="コード"></td>
-                    <td><input type="text" v-model="investTrustList.investTrustName" placeholder="名称"></td>
-                    <td><input type="text" v-model="investTrustList.investTrustGetValue" placeholder="取得価格"></td>
-                    <td><input type="text" v-model="investTrustList.investTrustStock" placeholder="保有数量"></td>
-                    <td>{{ investTrustList.investTrustValue }}</td>
-                    <td>{{ investTrustList.investTrustTotalValue }}</td>
-                    <td>{{ investTrustList.investTrustProfit }}</td>
-                    <td><button v-on:click="investTrustDeleteList(index)">Delete</button></td>
-
+                <tr v-for="(depositList, index) in depositLists">
+                    <td><input type="text" v-model="depositList.bankName" placeholder="銀行名" class="inputSize"></td>
+                    <td><input type="text" v-model="depositList.branchName" placeholder="支店名" class="inputSize"></td>
+                    <td><input type="text" v-model="depositList.depositAmount" placeholder="預金額" class="inputSize"></td>
+                    <td class="deleteSize"><button v-on:click="depositDeleteList(index)">Delete</button></td>
                 </tr>
             </table>
-        </div> -->
+        </div>
+
+        <div class="mainTable">
+            <div class="assetTable">
+                <table class="table title">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>####</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="index">投資信託</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>コード</th>
+                            <th>名称</th>
+                            <th>取得価格</th>
+                            <th>保有数量</th>
+                            <th>現在単価</th>
+                            <th>現在価格</th>
+                            <th>損益</th>
+                            <th>削除</th>
+                        </tr>
+                    </thead>
+                    <tr v-for="(investTrustList, index) in investTrustLists">
+                        <td><input type="text" v-model="investTrustList.investTrustCode" placeholder="コード"
+                                class="inputSize"></td>
+                        <td><input type="text" v-model="investTrustList.investTrustName" placeholder="名称"
+                                class="inputSize">
+                        </td>
+                        <td><input type="text" v-model="investTrustList.investTrustGetValue" placeholder="取得価格"
+                                class="inputSize"></td>
+                        <td><input type="text" v-model="investTrustList.investTrustStock" placeholder="保有数量"
+                                class="inputSize"></td>
+                        <td class="resultSize">{{ investTrustList.investTrustValue }}</td>
+                        <td class="resultSize">{{ investTrustList.investTrustTotalValue }}</td>
+                        <td class="resultSize">{{ investTrustList.investTrustProfit }}</td>
+                        <td class="deleteSize"><button v-on:click="investTrustDeleteList(index)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="assetTable">
+                <table class="table title">
+                    <tr>
+                        <td class="index">株式</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr v-for="(stockList, index) in stockLists">
+                        <td><input type="text" v-model="stockList.stockCode" placeholder="コード" class="inputSize"></td>
+                        <td><input type="text" v-model="stockList.stockName" placeholder="名称" class="inputSize"></td>
+                        <td><input type="text" v-model="stockList.stockGetValue" placeholder="取得価格" class="inputSize">
+                        </td>
+                        <td><input type="text" v-model="stockList.stockStock" placeholder="保有数量" class="inputSize"></td>
+                        <td class="resultSize">{{ stockList.stockValue }}</td>
+                        <td class="resultSize">{{ stockList.stockTotalValue }}</td>
+                        <td class="resultSize">{{ stockList.stockProfit }}</td>
+                        <td class="deleteSize"><button v-on:click="stockDeleteList(index)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="assetTable">
+                <table class="table title">
+                    <tr>
+                        <td class="index">仮想通貨</td>
+                    </tr>
+                </table>
+
+                <table class="table">
+                    <tr v-for="(cryptList, index) in cryptLists">
+                        <td class="index">
+                            <select v-model="cryptList.cryptCode" placeholder="コード" class="inputSize">
+                                <option>btc_jpy</option>
+                                <option>eth_jpy</option>
+                                <option>xrp_jpy</option>
+                                <option>xlm_jpy</option>
+                                <option>mona_jpy</option>
+                            </select>
+                        </td>
+                        <td><input type="text" v-model="cryptList.cryptName" placeholder="名称" class="inputSize"></td>
+                        <td><input type="text" v-model="cryptList.cryptGetValue" placeholder="取得価格" class="inputSize">
+                        </td>
+                        <td><input type="text" v-model="cryptList.cryptStock" placeholder="保有数量" class="inputSize"></td>
+                        <td class="resultSize">{{ cryptList.cryptValue }}</td>
+                        <td class="resultSize">{{ cryptList.cryptTotalValue }}</td>
+                        <td class="resultSize">{{ cryptList.cryptProfit }}</td>
+                        <td class="deleteSize"><button v-on:click="cryptDeleteList(index)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
         <!-- <div> 
             <div>

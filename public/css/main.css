@@ -1,8 +1,23 @@
-/* .row.assetTable {
+.assetTable {
     display: flex;
-} */
+    font-size: 1.0rem;
+}
 
-th {
+.assetTable.bank {
+    width: 50vw;
+    margin-bottom: 1rem;
+}
+
+.assetTable.total {
+    width: 50vw;
+    margin-bottom: 1rem;
+}
+
+.mainTable{
+    margin-bottom: 1rem;
+}
+
+/* th {
     background-color: #AAC4F2;
     padding: 0.5rem
 }
@@ -13,13 +28,13 @@ td {
 
 table {
     border-bottom: 1px solid black;
-}
+} */
 
 .row.table1 {
     margin-bottom: 1rem;
 }
 
-.col-md-2.crypt {
+.crypt {
     padding-right: 6rem
 }
 
@@ -42,6 +57,7 @@ table {
     margin-top: 1rem;
 }
 
+
 /* .col-md-1.hug {
     padding: 0;
 }
@@ -50,20 +66,28 @@ table {
     padding: 0;
 } */
 
-/* .table.title {
-    width: 3%;
+.table.title {
+    width: 6vw;
+}
+
+.table {
+    margin-bottom: 0;
 }
 
 .inputSize {
-    width: 15%;
+    width: 12vw;
 }
 
 .resultSize {
-    width: 12%;
+    width: 14vw;
 }
 
-.resultSize2 {
-    width: 14%;
-} */
+.deleteSize {
+    width: 4vw;
+}
+
+.index {
+    vertical-align: middle
+}
 
 /* border-bottom: 1px solid black; */
