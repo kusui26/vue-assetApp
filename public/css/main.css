@@ -1,93 +1,153 @@
-.assetTable {
-    display: flex;
-    font-size: 1.0rem;
+@media screen and (min-width:480px) and (max-width:1440px) {
+    .assetTable {
+        display: flex;
+        font-size: 1.0rem;
+    }
+
+    .assetTable.bank {
+        width: 50vw;
+        margin-bottom: 1rem;
+    }
+
+    .assetTable.total {
+        width: 50vw;
+        margin-bottom: 1rem;
+    }
+
+    .mainTable {
+        margin-bottom: 1rem;
+    }
+
+    /* th {
+        background-color: #AAC4F2;
+        padding: 0.5rem
+    }
+    
+    td {
+        padding: 0.5rem
+    }
+    
+    table {
+        border-bottom: 1px solid black;
+    } */
+
+    .row.table1 {
+        margin-bottom: 1rem;
+    }
+
+    .crypt {
+        padding-right: 6rem
+    }
+
+    .button1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .button2 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .button.margin {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .row.title {
+        margin-top: 1rem;
+    }
+
+
+    /* .col-md-1.hug {
+        padding: 0;
+    }
+    
+    .col-md-11.hug {
+        padding: 0;
+    } */
+
+    .table.title {
+        width: 6vw;
+    }
+
+    .table {
+        margin-bottom: 0;
+    }
+
+    .inputSize {
+        width: 12vw;
+    }
+
+    .resultSize {
+        width: 14vw;
+    }
+
+    .deleteSize {
+        width: 4vw;
+    }
+
+    .index {
+        vertical-align: middle
+    }
 }
 
-.assetTable.bank {
-    width: 50vw;
-    margin-bottom: 1rem;
+@media screen and (max-width:480px) {
+    .row.title {
+        margin-top: 1rem;
+    }
+
+    .button.margin {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .button1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .button2 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        width: 450px;
+    }
+
+    .assetTable {
+        display: flex;
+        font-size: 1.0rem;
+    }
+
+    .assetTable.bank {
+        width: 700px;
+    }
+
+    .assetTable.total {
+        width: 700px;
+    }
+
+    .mainTable {
+        width: 1300px;
+    }
+
+    .index {
+        vertical-align: middle;
+        width: 100px;
+    }
+
+    .table.title {
+        width: 100px;
+    }
+
+    .inputSize {
+        width: 150px;
+    }
+
+    .resultSize {
+        width: 200px;
+    }
+
+    .deleteSize {
+        width: 100px;
+    }
 }
-
-.assetTable.total {
-    width: 50vw;
-    margin-bottom: 1rem;
-}
-
-.mainTable{
-    margin-bottom: 1rem;
-}
-
-/* th {
-    background-color: #AAC4F2;
-    padding: 0.5rem
-}
-
-td {
-    padding: 0.5rem
-}
-
-table {
-    border-bottom: 1px solid black;
-} */
-
-.row.table1 {
-    margin-bottom: 1rem;
-}
-
-.crypt {
-    padding-right: 6rem
-}
-
-.button1 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.button2 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.button.margin {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-.row.title {
-    margin-top: 1rem;
-}
-
-
-/* .col-md-1.hug {
-    padding: 0;
-}
-
-.col-md-11.hug {
-    padding: 0;
-} */
-
-.table.title {
-    width: 6vw;
-}
-
-.table {
-    margin-bottom: 0;
-}
-
-.inputSize {
-    width: 12vw;
-}
-
-.resultSize {
-    width: 14vw;
-}
-
-.deleteSize {
-    width: 4vw;
-}
-
-.index {
-    vertical-align: middle
-}
-
-/* border-bottom: 1px solid black; */
