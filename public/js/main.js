@@ -86,12 +86,15 @@ const apple = Vue.createApp({
             this.depositUpdate()
         },
 
+        // https://vue-assetapp.herokuapp.com/
+
         cryptUpdate: function () {
             // Update: function () {
             this.cryptLists.forEach((cryptList) => {
                 let json = { "code": cryptList.cryptCode };
 
-                fetch('http://localhost:3000/crypt/', {
+                fetch('https://vue-assetapp.herokuapp.com/crypt/', {
+                    // fetch('http://localhost:3000/crypt/', {
 
                     method: 'POST',
                     headers: {
@@ -125,7 +128,8 @@ const apple = Vue.createApp({
             this.investTrustLists.forEach((investTrustList) => {
                 let json = { "code": investTrustList.investTrustCode };
 
-                fetch('http://localhost:3000/investtrust/', {
+                fetch('https://vue-assetapp.herokuapp.com/investtrust/', {
+                    // fetch('http://localhost:3000/investtrust/', {
 
                     method: 'POST',
                     headers: {
@@ -160,7 +164,8 @@ const apple = Vue.createApp({
             await this.stockLists.forEach((stockList) => {
                 let json = { "code": stockList.stockCode };
 
-                fetch('http://localhost:3000/stock/', {
+                fetch('https://vue-assetapp.herokuapp.com/stock/', {
+                    // fetch('http://localhost:3000/stock/', {
 
                     method: 'POST',
                     headers: {
@@ -191,7 +196,8 @@ const apple = Vue.createApp({
         },
 
         exchangeGet: async function () {
-            await fetch('http://localhost:3000/exchange/', {
+            await fetch('https://vue-assetapp.herokuapp.com//exchange/', {
+                // await fetch('http://localhost:3000/exchange/', {
 
                 method: 'POST',
                 headers: {
