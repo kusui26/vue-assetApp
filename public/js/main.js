@@ -397,7 +397,7 @@ const apple = Vue.createApp({
                     const token = credential.accessToken;
                     const user = result.user;
                     this.username = result.user.uid
-                    this.firebaseRead()
+                    this.firebaseRead();
 
                 }).catch((error) => {
                     const errorCode = error.code;
@@ -405,7 +405,7 @@ const apple = Vue.createApp({
                     const email = error.customData.email;
                     const credential = GoogleAuthProvider.credentialFromError(error);
                 });
-        }
+        },
     }
 })
 
