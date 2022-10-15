@@ -77,7 +77,7 @@ const apple = Vue.createApp({
             this.totalCryptGet = 0
             this.totalInvestTrustGet = 0
             this.totalStockGet = 0
-            this.graphValueList = []
+            this.graphValueLists = []
             this.graphNameLists = []
 
             this.cryptUpdate();
