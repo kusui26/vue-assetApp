@@ -196,7 +196,7 @@ const apple = Vue.createApp({
         },
 
         exchangeGet: async function () {
-            await fetch('https://vue-assetapp.herokuapp.com//exchange/', {
+            await fetch('https://vue-assetapp.herokuapp.com/exchange/', {
                 // await fetch('http://localhost:3000/exchange/', {
 
                 method: 'POST',
