@@ -86,8 +86,6 @@ const apple = Vue.createApp({
             this.depositUpdate()
         },
 
-        // https://vue-assetapp.herokuapp.com/
-
         cryptUpdate: function () {
             // Update: function () {
             this.cryptLists.forEach((cryptList) => {
@@ -179,15 +177,29 @@ const apple = Vue.createApp({
                 }).then(body => {
                     console.log(body);
 
-                    stockList.stockValue = Math.round(body).toLocaleString();
-                    stockList.stockTotalValue = Math.round(body * stockList.stockStock * this.exchangeValue).toLocaleString();
-                    stockList.stockProfit = Math.round(body * stockList.stockStock * this.exchangeValue - stockList.stockGetValue).toLocaleString();
+                    if (stockList.stockCode.slice(-1) == "T") {
+                        stockList.stockValue = Math.round(body).toLocaleString();
+                        stockList.stockTotalValue = Math.round(body * stockList.stockStock).toLocaleString();
+                        stockList.stockProfit = Math.round(body * stockList.stockStock - stockList.stockGetValue).toLocaleString();
 
-                    this.totalStockAsset = parseInt(this.totalStockAsset) + Math.round(body * stockList.stockStock * this.exchangeValue)
-                    this.totalStockGet = parseInt(this.totalStockGet) + parseInt(stockList.stockGetValue);
+                        this.totalStockAsset = parseInt(this.totalStockAsset) + Math.round(body * stockList.stockStock)
+                        this.totalStockGet = parseInt(this.totalStockGet) + parseInt(stockList.stockGetValue);
 
-                    this.graphValueLists.push(Math.round(body * stockList.stockStock * this.exchangeValue));
-                    this.graphNameLists.push(stockList.stockName);
+                        this.graphValueLists.push(Math.round(body * stockList.stockStock));
+                        this.graphNameLists.push(stockList.stockName);
+
+                    } else {
+                        stockList.stockValue = Math.round(body).toLocaleString();
+                        stockList.stockTotalValue = Math.round(body * stockList.stockStock * this.exchangeValue).toLocaleString();
+                        stockList.stockProfit = Math.round(body * stockList.stockStock * this.exchangeValue - stockList.stockGetValue).toLocaleString();
+
+                        this.totalStockAsset = parseInt(this.totalStockAsset) + Math.round(body * stockList.stockStock * this.exchangeValue)
+                        this.totalStockGet = parseInt(this.totalStockGet) + parseInt(stockList.stockGetValue);
+
+                        this.graphValueLists.push(Math.round(body * stockList.stockStock * this.exchangeValue));
+                        this.graphNameLists.push(stockList.stockName);
+
+                    }
 
                 }).catch(error => {
                     console.log(error);
