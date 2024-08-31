@@ -19,8 +19,6 @@
             <button v-on:click="loginUser" type="button" class="button margin">ログイン</button>
             <button v-on:click="firebaseStarage" type="button" class="button margin">データ保存</button>
             <button v-on:click="assetUpdate" type="button" class="button margin">データ更新</button>
-            <!-- <button v-on:click="cryptUpdate(); investTrustUpdate(); stockUpdate(); depositUpdate()" type="button"
-                class="button margin">データ更新</button> -->
         </div>
 
         <div class="button2">
@@ -29,145 +27,6 @@
             <button v-on:click="stockAddList" type="button" class="button margin">株式追加</button>
             <button v-on:click="cryptAddList" type="button" class="button margin">仮想通貨追加</button>
         </div>
-
-        <!-- <div class="row table1">
-            <table class="col-6">
-                <thead>
-                    <tr>
-                        <th>資産総計</th>
-                        <th>現在価格</th>
-                        <th>取得価格</th>
-                        <th>損益</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>{{ totalAssetCalculate() }}</td>
-                    <td>{{ totalValueCalculate() }}</td>
-                    <td>{{ totalGetCalculate() }}</td>
-                    <td>{{ totalProfitCalculate() }}</td>
-                </tr>
-            </table>
-        </div> -->
-
-        <!-- <div class="row table1">
-            <table class="col-1">
-                <thead>
-                    <tr>
-                        <th>####</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>預金</td>
-                </tr>
-            </table>
-
-            <table class="col-4">
-                <thead>
-                    <tr>
-                        <th>銀行名</th>
-                        <th>支店名</th>
-                        <th>預金額</th>
-                        <th>削除</th>
-                    </tr>
-                </thead>
-                <tr v-for="(depositList, index) in depositLists">
-                    <td><input type="text" v-model="depositList.bankName" placeholder="銀行名"></td>
-                    <td><input type="text" v-model="depositList.branchName" placeholder="支店名"></td>
-                    <td><input type="text" v-model="depositList.depositAmount" placeholder="預金額"></td>
-                    <td><button v-on:click="depositDeleteList(index)">Delete</button></td>
-
-                </tr>
-            </table>
-        </div> -->
-
-        <!-- <div class="row">
-            <table class="col-1">
-                <thead>
-                    <tr>
-                        <th>####</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>投資信託</td>
-                </tr>
-            </table>
-
-            <table class="col-11">
-                <thead class="row">
-                    <tr>
-                        <th class="md-1">コード</th>
-                        <th>名称</th>
-                        <th>取得価格</th>
-                        <th>保有数量</th>
-                        <th>現在単価</th>
-                        <th>現在価格</th>
-                        <th>損益</th>
-                        <th>削除</th>
-                    </tr>
-                </thead>
-                <tr v-for="(investTrustList, index) in investTrustLists">
-                    <td><input type="text" v-model="investTrustList.investTrustCode" placeholder="コード"></td>
-                    <td><input type="text" v-model="investTrustList.investTrustName" placeholder="名称"></td>
-                    <td><input type="text" v-model="investTrustList.investTrustGetValue" placeholder="取得価格"></td>
-                    <td><input type="text" v-model="investTrustList.investTrustStock" placeholder="保有数量"></td>
-                    <td>{{ investTrustList.investTrustValue }}</td>
-                    <td>{{ investTrustList.investTrustTotalValue }}</td>
-                    <td>{{ investTrustList.investTrustProfit }}</td>
-                    <td><button v-on:click="investTrustDeleteList(index)">Delete</button></td>
-
-                </tr>
-            </table>
-        </div>
-
-        <div class="row">
-            <table class="col-1">
-                <tr>
-                    <td>株式</td>
-                </tr>
-            </table>
-
-            <table class="col-11">
-                <tr v-for="(stockList, index) in stockLists">
-                    <td><input type="text" v-model="stockList.stockCode" placeholder="コード"></td>
-                    <td><input type="text" v-model="stockList.stockName" placeholder="名称"></td>
-                    <td><input type="text" v-model="stockList.stockGetValue" placeholder="取得価格"></td>
-                    <td><input type="text" v-model="stockList.stockStock" placeholder="保有数量"></td>
-                    <td>{{ stockList.stockValue }}</td>
-                    <td>{{ stockList.stockTotalValue }}</td>
-                    <td>{{ stockList.stockProfit }}</td>
-                    <td><button v-on:click="stockDeleteList(index)">Delete</button></td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="row table1">
-            <table class="col-1">
-                <tr>
-                    <td>仮想通貨</td>
-                </tr>
-            </table>
-
-            <table class="col-11">
-                <tr v-for="(cryptList, index) in cryptLists">
-                    <td class="crypt">
-                        <select v-model="cryptList.cryptCode" placeholder="コード">
-                            <option>btc_jpy</option>
-                            <option>eth_jpy</option>
-                            <option>xrp_jpy</option>
-                            <option>xlm_jpy</option>
-                            <option>mona_jpy</option>
-                        </select>
-                    </td>
-                    <td><input type="text" v-model="cryptList.cryptName" placeholder="名称"></td>
-                    <td><input type="text" v-model="cryptList.cryptGetValue" placeholder="取得価格"></td>
-                    <td><input type="text" v-model="cryptList.cryptStock" placeholder="保有数量"></td>
-                    <td>{{ cryptList.cryptValue }}</td>
-                    <td>{{ cryptList.cryptTotalValue }}</td>
-                    <td>{{ cryptList.cryptProfit }}</td>
-                    <td><button v-on:click="cryptDeleteList(index)">Delete</button></td>
-                </tr>
-            </table>
-        </div> -->
 
         <div class="assetTable total">
             <table class="table table-bordered">
@@ -318,73 +177,6 @@
             </div>
         </div>
 
-        <!-- <div> 
-            <div>
-                <h3>TOTAL</h3>
-                <div>資産総計：{{ totalAssetCalculate() }} 現在価格：{{ totalValueCalculate() }} 取得価格：{{totalGetCalculate() }}
-                    損益：{{ totalProfitCalculate() }} </div>
-            </div> 
-            <div>
-                <h3>預金</h3>
-                <div v-for="(depositList, index) in depositLists">
-                    <input type="text" v-model="depositList.bankName" placeholder="銀行名">
-                    <input type="text" v-model="depositList.branchName" placeholder="支店名">
-                    <input type="text" v-model="depositList.depositAmount" placeholder="預金額">
-                    <button v-on:click="depositDeleteList(index)">Delete</button>
-                </div>
-                <button v-on:click="depositAddList">Add</button>
-            </div>
-
-            <div>
-                <h3>投資信託</h3>
-                <div v-for="(investTrustList, index) in investTrustLists">
-                    <input type="text" v-model="investTrustList.investTrustCode" placeholder="コード">
-                    <input type="text" v-model="investTrustList.investTrustName" placeholder="名称">
-                    <input type="text" v-model="investTrustList.investTrustGetValue" placeholder="取得価格">
-                    <input type="text" v-model="investTrustList.investTrustStock" placeholder="保有数量">
-                    <input type="text" v-model="investTrustList.investTrustValue" placeholder="現在単価">
-                    <input type="text" v-model="investTrustList.investTrustTotalValue" placeholder="現在価格">
-                    <input type="text" v-model="investTrustList.investTrustProfit" placeholder="損益">
-                    <button v-on:click="investTrustDeleteList(index)">Delete</button>
-                </div>
-                <button v-on:click="investTrustAddList">Add</button>
-            </div>
-            <div>
-                <h3>株式</h3>
-                <div v-for="(stockList, index) in stockLists">
-                    <input type="text" v-model="stockList.stockCode" placeholder="コード">
-                    <input type="text" v-model="stockList.stockName" placeholder="名称">
-                    <input type="text" v-model="stockList.stockGetValue" placeholder="取得価格">
-                    <input type="text" v-model="stockList.stockStock" placeholder="保有数量">
-                    <input type="text" v-model="stockList.stockValue" placeholder="現在単価">
-                    <input type="text" v-model="stockList.stockTotalValue" placeholder="現在価格">
-                    <input type="text" v-model="stockList.stockProfit" placeholder="損益">
-                    <button v-on:click="stockDeleteList(index)">Delete</button>
-                </div>
-                <button v-on:click="stockAddList">Add</button>
-            </div>
-            <div>
-                <h3>仮想通貨</h3>
-                <div v-for="(cryptList, index) in cryptLists">
-                    <select v-model="cryptList.cryptCode" placeholder="コード">
-                        <option>btc_jpy</option>
-                        <option>eth_jpy</option>
-                        <option>xrp_jpy</option>
-                        <option>xlm_jpy</option>
-                        <option>mona_jpy</option>
-                    </select>
-                    <input type="text" v-model="cryptList.cryptName" placeholder="名称">
-                    <input type="text" v-model="cryptList.cryptGetValue" placeholder="取得価格">
-                    <input type="text" v-model="cryptList.cryptStock" placeholder="保有数量">
-                    <input type="text" v-model="cryptList.cryptValue" placeholder="現在単価">
-                    <input type="text" v-model="cryptList.cryptTotalValue" placeholder="現在価格">
-                    <input type="text" v-model="cryptList.cryptProfit" placeholder="損益">
-                    <button v-on:click="cryptDeleteList(index)">Delete</button>
-                </div>
-                <button v-on:click="cryptAddList">Add</button>
-            </div>
-
-        </div> -->
         <div><button v-on:click="displayGraph" type="button">グラフ表示</button></div>
         <canvas id="myChart" width="750" height="750"></canvas>
     </div>
@@ -392,7 +184,7 @@
     <script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
     <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module" src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

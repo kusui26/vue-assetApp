@@ -17,6 +17,8 @@ const db = getFirestore(app)
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
+const { createApp } = Vue
+
 const apple = Vue.createApp({
     data: () => ({
         cryptLists: [
@@ -50,24 +52,6 @@ const apple = Vue.createApp({
 
     }),
     methods: {
-        // assetUpdate: async function () {
-        //     await Promise.all([
-        //         this.cryptUpdate(),
-        //         this.investTrustUpdate(),
-        //         this.stockUpdate(),
-        //         this.depositUpdate()
-        //     ]).then(() => {
-        //         this.totalUpdate()
-        //     })
-        // },
-        // assetUpdate: async function () {
-        //     await this.cryptUpdate()
-        //     await this.investTrustUpdate()
-        //     await this.stockUpdate()
-        //     await this.depositUpdate()
-
-        //     this.totalUpdate()
-        // },
         assetUpdate: function () {
 
             this.totalCryptAsset = 0
@@ -87,7 +71,6 @@ const apple = Vue.createApp({
         },
 
         cryptUpdate: function () {
-            // Update: function () {
             this.cryptLists.forEach((cryptList) => {
                 let json = { "code": cryptList.cryptCode };
 
@@ -307,9 +290,6 @@ const apple = Vue.createApp({
                                 let label = ctx.chart.data.labels[ctx.dataIndex];
                                 let value = ctx.dataset.data[ctx.dataIndex];
                                 return label + '\n' + value.toLocaleString();
-                                // return '[' + label + ']' + '\n' + value + '%';
-
-                                // return args.value.toLocaleString() + '（' + args.percentage + '%）';
                             },
                             color: 'black',
                             font: {
@@ -323,19 +303,6 @@ const apple = Vue.createApp({
                             fontSize: 20,
                             position: 'border'
                         },
-
-                        // labels: {
-                        //     render: function (args) {
-                        //         return args.value.toLocaleString() + '（' + args.percentage + '%）';
-                        //         // return args.value.toLocaleString() + '\n' + args.percentage + '%';
-                        //     },
-                        //     fontColor: 'black',
-                        //     fontSize: 20,
-                        // },
-                        // outlabels: {
-                        //     text: '%l\n%p',
-                        //     color: 'black'
-                        // }
                     },
                     layout: {
                         padding: {
@@ -403,7 +370,6 @@ const apple = Vue.createApp({
 
                 console.log("Document data:", docSnap.data());
             } else {
-                // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
         },

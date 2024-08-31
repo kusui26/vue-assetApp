@@ -3,9 +3,7 @@ const app = express()
 const request = require('request')
 const axios = require('axios')
 const cheerio = require('cheerio')
-// const yahooFinance = require("yahoo-finance");
 const yahooFinance = require('yahoo-finance2').default;
-
 app.use('/', express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
@@ -58,17 +56,6 @@ app.post('/stock/', (req, res) => {
         res.send(JSON.stringify(stock.regularMarketPrice));
     }
     stock();
-
-    // yahooFinance.historical(
-    //     {
-    //         symbol: req.body.code,
-    //         from: isoYesterday,
-    //         to: isoToday
-    //     },
-    //     function (err, quotes) {
-    //         res.send(JSON.stringify(quotes[0].close));
-    //     }
-    // )
 });
 
 app.post('/exchange/', (req, res) => {
@@ -78,16 +65,6 @@ app.post('/exchange/', (req, res) => {
         res.send(JSON.stringify(exchange.bid));
     }
     exchange();
-    // yahooFinance.historical(
-    //     {
-    //         symbol: "USDJPY=X",
-    //         from: isoYesterday,
-    //         to: isoToday
-    //     },
-    //     function (err, quotes) {
-    //         res.send(JSON.stringify(quotes[0].close));
-    //     }
-    // )
 });
 
 const PORT = process.env.PORT || 3000;

@@ -18,19 +18,6 @@
         margin-bottom: 1rem;
     }
 
-    /* th {
-        background-color: #AAC4F2;
-        padding: 0.5rem
-    }
-    
-    td {
-        padding: 0.5rem
-    }
-    
-    table {
-        border-bottom: 1px solid black;
-    } */
-
     .row.table1 {
         margin-bottom: 1rem;
     }
@@ -57,15 +44,6 @@
     .row.title {
         margin-top: 1rem;
     }
-
-
-    /* .col-md-1.hug {
-        padding: 0;
-    }
-    
-    .col-md-11.hug {
-        padding: 0;
-    } */
 
     .table.title {
         width: 6vw;
