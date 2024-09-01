@@ -160,7 +160,7 @@ const apple = Vue.createApp({
                 }).then(body => {
                     console.log(body);
 
-                    if (stockList.stockCode.slice(-1) == "T") {
+                    if (stockList.stockCode.includes(".")) {
                         stockList.stockValue = Math.round(body).toLocaleString();
                         stockList.stockTotalValue = Math.round(body * stockList.stockStock).toLocaleString();
                         stockList.stockProfit = Math.round(body * stockList.stockStock - stockList.stockGetValue).toLocaleString();
