@@ -1,71 +1,98 @@
-const express = require('express')
-const app = express()
-const request = require('request')
-const axios = require('axios')
-const cheerio = require('cheerio')
+// index.js
+const express = require('express');
+const app = express();
+const axios = require('axios');
+const cheerio = require('cheerio');
 const yahooFinance = require('yahoo-finance2').default;
-app.use('/', express.static('public'));
+
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json())
+app.use(express.json());
+// public フォルダ（HTML, CSS, main.js 等）を静的配信
+app.use(express.static('public'));
 
-// Date and time acquisition
-const dateGet = new Date();
-const year = dateGet.getFullYear();
-const month = dateGet.getMonth();
-const today = dateGet.getDate();
-const yesterday = dateGet.getDate() - 1;
-const time = dateGet.getHours() + 9;
+// 外部リクエスト時のユーザーエージェント例
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; rv:118.0) Gecko/20100101 Firefox/118.0';
 
-const convertToday = new Date(year, month, today, time);
-const convertYesterday = new Date(year, month, yesterday, time);
-
-const isoToday = convertToday.toISOString().slice(0, 10);
-const isoYesterday = convertYesterday.toISOString().slice(0, 10)
-
-app.post('/crypt/', (req, res) => {
-    let options = {
-        method: 'GET',
-        url: "https://api.bitflyer.com/v1/getticker?product_code=" + req.body.code,
-        json: true,
-    };
-    request(options, function (error, response, body) {
-        console.log(body.best_bid);
-        res.send(body);
-    });
-});
-
-app.post('/investtrust/', (req, res) => {
-    let URL = "https://itf.minkabu.jp/fund/" + req.body.code
-
-    axios(URL)
-        .then((response) => {
-            let htmlParser = response.data
-            const $ = cheerio.load(htmlParser);
-
-            let price = $(".fund_cv", htmlParser).find(".stock_price").text().slice(0, -1);
-            console.log(price);
-            res.send(JSON.stringify(parseInt(price.replace(/,/, ''))));
-        })
-});
-
-app.post('/stock/', (req, res) => {
-
-    async function stock() {
-        let stock = await yahooFinance.quote(req.body.code);
-        console.log(stock.regularMarketPrice)
-        res.send(JSON.stringify(stock.regularMarketPrice));
+// ---- 1) 仮想通貨 ----
+app.post('/crypt/', async (req, res) => {
+    try {
+        const code = req.body.code;
+        // bitFlyer ticker API
+        const url = `https://api.bitflyer.com/v1/getticker?product_code=${code}`;
+        const response = await axios.get(url, {
+            headers: { 'User-Agent': USER_AGENT },
+        });
+        if (!response.data || response.data.best_bid === undefined) {
+            // API応答が想定外なら 500
+            return res.status(500).json({ error: "Invalid crypt data." });
+        }
+        // そのまま JSON で返す
+        // response.data は { best_bid: number, best_ask: number, ... } を想定
+        res.json(response.data);
+    } catch (error) {
+        console.error(error);
+        // 例外時は 500 ステータス + JSON で返す
+        res.status(500).json({ error: error.message });
     }
-    stock();
 });
 
-app.post('/exchange/', (req, res) => {
-    async function exchange() {
-        let exchange = await yahooFinance.quote('USDJPY=X');
-        console.log(exchange.regularMarketPrice)
-        res.send(JSON.stringify(exchange.bid));
+// ---- 2) 投資信託 ----
+app.post('/investtrust/', async (req, res) => {
+    try {
+        const code = req.body.code;
+        const URL = "https://itf.minkabu.jp/fund/" + code;
+
+        const response = await axios.get(URL, {
+            headers: { 'User-Agent': USER_AGENT }
+        });
+        const $ = cheerio.load(response.data);
+
+        // 例: .fund_cv .stock_price から取得 → 末尾の「円」をsliceでカット
+        let priceText = $(".fund_cv .stock_price").text().trim().slice(0, -1);
+        // 3,456円 → "3456"
+        let numericPrice = parseInt(priceText.replace(/,/g, ''), 10);
+
+        if (isNaN(numericPrice)) {
+            return res.status(500).json({ error: "Failed to parse price." });
+        }
+        res.json(numericPrice); // 数値を JSON 形式で返す
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
     }
-    exchange();
+});
+
+// ---- 3) 株式 ----
+app.post('/stock/', async (req, res) => {
+    try {
+        const code = req.body.code;
+        const quote = await yahooFinance.quote(code);
+        // quote.regularMarketPrice が数値として返ってくる想定
+        if (!quote || quote.regularMarketPrice === undefined) {
+            return res.status(500).json({ error: "Invalid stock data." });
+        }
+        res.json(quote.regularMarketPrice);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// ---- 4) 為替 ----
+app.post('/exchange/', async (req, res) => {
+    try {
+        // USDJPY=X を Yahoo Finance API で取得
+        const exchange = await yahooFinance.quote('USDJPY=X');
+        if (!exchange || exchange.bid === undefined) {
+            return res.status(500).json({ error: "Invalid exchange data." });
+        }
+        // bid を返す
+        res.json(exchange.bid);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
